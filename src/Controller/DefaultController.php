@@ -7,6 +7,7 @@ use App\Services\GiftsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class DefaultController extends AbstractController
 {
@@ -18,6 +19,16 @@ class DefaultController extends AbstractController
     {
 
         $users = $userRepository->findAll();
+
+        $cookie = new Cookie(
+            'my_cookie',
+            'cookie_value',
+            time() + (2 * 365 * 24 * 60 * 60)
+        );
+
+        $res = new Response();
+        $res->headers->setCookie($cookie);
+        $res->send();
 
         $this->addFlash(
             'notice',
