@@ -11,6 +11,14 @@
             font: 18px/1.5 sans-serif;
         }
 
+        .notice {
+            background: #718C00;
+        }
+
+        .warning {
+            background: #AA3333;
+        }
+
         .example-wrapper code {
             background: #F5F5F5;
             padding: 2px 6px;
@@ -23,5 +31,17 @@
                 <li>{{ user.name }} - you won {{ random_gift[loop.index0] }}</li>
             {% endfor %}
         </ul>
+
+{#{{ dump(app) }}#}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="{{ label }}">
+                    {{ message }}
+                </div>
+
+
+            {% endfor %}
+        {% endfor %}
+
     </div>
 {% endblock %}

@@ -19,6 +19,16 @@ class DefaultController extends AbstractController
 
         $users = $userRepository->findAll();
 
+        $this->addFlash(
+            'notice',
+            'Hello with flash Message Notice'
+        );
+
+        $this->addFlash(
+            'warning',
+            'Hello with flash Message Warning'
+        );
+
         return $this->render('default/index.html.twig', [
             'users' => $users,
             'random_gift' => $gifts->gifts
