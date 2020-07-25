@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use App\Services\GiftsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Cookie;
 
@@ -15,20 +17,18 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="default_home")
      */
-    public function index(UserRepository $userRepository, GiftsService $gifts)
+    public function index(UserRepository $userRepository, GiftsService $gifts, Request $request, Session $session)
     {
 
         $users = $userRepository->findAll();
 
-        $cookie = new Cookie(
-            'my_cookie',
-            'cookie_value',
-            time() + (2 * 365 * 24 * 60 * 60)
-        );
+//        exit($request->cookies->get('PHPSESSID'));
 
-        $res = new Response();
-        $res->headers->setCookie($cookie);
-        $res->send();
+        $session->set('name', 'session_value');
+
+        if ($session->has('name')) {
+            exit($session->get('name'));
+        }
 
         $this->addFlash(
             'notice',
