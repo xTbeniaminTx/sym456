@@ -22,13 +22,11 @@ class DefaultController extends AbstractController
 
         $users = $userRepository->findAll();
 
-//        exit($request->cookies->get('PHPSESSID'));
-
-        $session->remove('name');
-
-        if ($session->has('name')) {
-            exit($session->get('name'));
-        }
+//        exit($request->query->get('page', 'default'));
+//        exit($request->server->get('HTTP_HOST'));
+        $request->isXmlHttpRequest();  //is it an Ajax request?
+        $request->request->get('page');
+        $request->files->get('foo');
 
         $this->addFlash(
             'notice',
