@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47d6e7bc-a56f-4d9e-8f21-169aca7f77a7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +122,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1fAlQxDlTiAYillA9gaKyMtCAhm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -150,7 +154,7 @@
       <workItem from="1595668767143" duration="723000" />
       <workItem from="1595669822722" duration="4366000" />
       <workItem from="1595674213365" duration="14565000" />
-      <workItem from="1595797374737" duration="362000" />
+      <workItem from="1595797374737" duration="1151000" />
     </task>
     <servers />
   </component>

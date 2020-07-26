@@ -22,12 +22,6 @@ class DefaultController extends AbstractController
 
         $users = $userRepository->findAll();
 
-//        exit($request->query->get('page', 'default'));
-//        exit($request->server->get('HTTP_HOST'));
-        $request->isXmlHttpRequest();  //is it an Ajax request?
-        $request->request->get('page');
-        $request->files->get('foo');
-
         $this->addFlash(
             'notice',
             'Hello with flash Message Notice'
@@ -40,7 +34,7 @@ class DefaultController extends AbstractController
 
         return $this->render('default/index.html.twig', [
             'users' => $users,
-            'random_gift' => $gifts->gifts
+            'random_gift' => $44gifts->gifts
         ]);
     }
 
