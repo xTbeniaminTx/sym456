@@ -24,7 +24,7 @@ class DefaultController extends AbstractController
 
 //        exit($request->cookies->get('PHPSESSID'));
 
-        $session->set('name', 'session_value');
+        $session->remove('name');
 
         if ($session->has('name')) {
             exit($session->get('name'));
