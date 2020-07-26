@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DefaultController extends AbstractController
 {
@@ -21,6 +22,10 @@ class DefaultController extends AbstractController
     {
 
         $users = $userRepository->findAll();
+
+        if ($users) {
+            throw $this->createNotFoundException('The users do not exist');
+        }
 
         $this->addFlash(
             'notice',
@@ -34,7 +39,7 @@ class DefaultController extends AbstractController
 
         return $this->render('default/index.html.twig', [
             'users' => $users,
-            'random_gift' => $44gifts->gifts
+            'random_gift' => $gifts->gifts
         ]);
     }
 
