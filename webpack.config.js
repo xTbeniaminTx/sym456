@@ -19,6 +19,12 @@ Encore
      */
     .addEntry('js/custom', './build/js/custom.js')
     .addStyleEntry('css/custom', './build/css/custom.css')
+    .autoProvidejQuery()
+    .autoProvideVariables({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+    })
 
 
 ;

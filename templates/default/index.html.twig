@@ -70,6 +70,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script>
         let route = "{{ string|escape('js') }}";
         alert(route);
