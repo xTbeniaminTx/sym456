@@ -17,7 +17,7 @@
         "symfony/console": "*",
         "symfony/dotenv": "*",
         "symfony/expression-language": "*",
-        "symfony/flex": "^1.3.1",
+        "symfony/flex": "^1.9",
         "symfony/form": "*",
         "symfony/framework-bundle": "4.2.*",
         "symfony/maker-bundle": "^1.20",
@@ -35,6 +35,8 @@
         "symfony/yaml": "*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "3.0.2",
+        "symfony/config": "4.2.*",
         "symfony/debug-pack": "*",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
