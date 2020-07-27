@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Services\GiftsService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,29 +25,17 @@ class DefaultController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function index(UserRepository $userRepository, GiftsService $gifts, Request $request, Session $session)
+    public function index(UserRepository $userRepository, GiftsService $gifts, Request $request,
+                          Session $session, EntityManagerInterface $entityManager)
     {
+        $user = new User();
+        $user->setName('Benjamin');
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-        $users = $userRepository->findAll();
+        dump('Annew user was saved with the id of ' . $user->getId());
 
-        if (!$users) {
-            throw $this->createNotFoundException('The users do not exist');
-        }
-
-        $this->addFlash(
-            'notice',
-            'Hello with flash Message Notice'
-        );
-
-        $this->addFlash(
-            'warning',
-            'Hello with flash Message Warning'
-        );
-
-        return $this->render('default/index.html.twig', [
-            'users' => $users,
-            'random_gift' => $gifts->gifts
-        ]);
+        return $this->render('default/index.html.twig', []);
     }
 
     /**

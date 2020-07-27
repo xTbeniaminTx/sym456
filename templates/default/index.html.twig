@@ -27,35 +27,7 @@
         }
     </style>
 
-    {% set usersTwig = [
-        {name:"Sussan"},{name:"Lyla"},{name:"Condor"}
-    ] %}
 
-    <div class="example-wrapper">
-        <ul>
-            {% for user in users %}
-                <li>{{ user.name }} - you won {{ random_gift[loop.index0] }}</li>
-            {% endfor %}
-        </ul>
-
-        {#{{ dump(app) }}#}
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="{{ label }}">
-                    {{ message }}
-                </div>
-
-
-            {% endfor %}
-        {% endfor %}
-
-        {% for userT in usersTwig if userT.name == 'Condor' %}
-            <p>{{ userT.name }}</p>
-        {% else %}
-            <p>No user with this name</p>
-        {% endfor %}
-
-        {{ include('includes/subview.html.twig', {'usersTwig': usersTwig}) }}
 
         {{ path('home') }} <br>
         {{ url('home') }} <br>
