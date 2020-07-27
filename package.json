@@ -1,0 +1,28 @@
+{
+  "name": "sym456",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/btolan-karudev/sym456.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/btolan-karudev/sym456/issues"
+  },
+  "homepage": "https://github.com/btolan-karudev/sym456#readme",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.30.2"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
