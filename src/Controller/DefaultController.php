@@ -138,7 +138,17 @@ class DefaultController extends AbstractController
      */
     public function methodToForward($param)
     {
-        exit('Test controller forwarding - ' .$param);
+        exit('Test controller forwarding - ' . $param);
+    }
+
+    public function mostPopularPosts($number = 2)
+    {
+        $posts = ["post1", "post2", "post3", "post4"];
+
+        return $this->render('default/most_popular_posts.html.twig', [
+            'posts' => $posts
+        ]);
+
     }
 
 }

@@ -74,13 +74,15 @@
 
         {{ dump(app.session) }}
 
+        {{ render(controller(
+            'App\\Controller\\DefaultController::mostPopularPosts',
+            {'number': 2}
+        )) }}
+
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script>
-        let route = "{{ string|escape('js') }}";
-        alert(route);
-    </script>
+
 {% endblock %}
+
