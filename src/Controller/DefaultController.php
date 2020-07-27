@@ -25,15 +25,12 @@ class DefaultController extends AbstractController
     /**
      * @Route("/home", name="home")
      */
-    public function index(UserRepository $userRepository, GiftsService $gifts, Request $request,
-                          Session $session, EntityManagerInterface $entityManager)
+    public function index(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository)
     {
-        $user = new User();
-        $user->setName('Benjamin');
-        $entityManager->persist($user);
-        $entityManager->flush();
+//        $user = $userRepository->find(6);
+        $user = $userRepository->findBy(['name' => 'Benjaimn']);
 
-        dump('Annew user was saved with the id of ' . $user->getId());
+        dump($user);
 
         return $this->render('default/index.html.twig', []);
     }
