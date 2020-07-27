@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends AbstractController
 {
@@ -83,5 +84,19 @@ class DefaultController extends AbstractController
     {
         return new Response("Advance route 4 --- Translated routes!");
     }
+
+    /**
+     * @Route("/generate-url/{param?}", name="generate_url")
+     */
+    public function generate_url()
+    {
+        exit($this->generateUrl(
+            'generate_url',
+            array('param' => 10),
+            UrlGeneratorInterface::ABSOLUTE_URL
+        ));
+    }
+
+
 
 }
