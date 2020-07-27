@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends AbstractController
@@ -97,6 +95,13 @@ class DefaultController extends AbstractController
         ));
     }
 
-
+    /**
+     * @Route("/download", name="download")
+     */
+    public function download()
+    {
+        $path = $this->getParameter('download_directory');
+        return $this->file($path.'file.pdf');
+    }
 
 }
