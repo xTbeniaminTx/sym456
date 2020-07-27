@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Video;
 use App\Repository\UserRepository;
 use App\Services\GiftsService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,12 +28,9 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
-        $user = new User();
-        $user->setName('Robica');
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $video = $entityManager->find(Video::class, 1);
 
-        dump($user);
+        dump($video->getUser()->getName());
 
         return $this->render('default/index.html.twig', []);
     }
