@@ -32,7 +32,15 @@ class DefaultController extends AbstractController
 
 //        $user = $userRepository->findBy(['name'=>'Benjamin'],['id'=>'ASC']);
 
-        $user = $userRepository->findAll();
+        $id = 6;
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('No user with this id ' . $id);
+        }
+
+        $user->setName('Benjito');
+        $entityManager->flush();
 
         dump($user);
 
