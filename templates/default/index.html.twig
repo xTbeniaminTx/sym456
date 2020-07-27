@@ -2,6 +2,8 @@
 
 {% block title %}Hello DefaultController!{% endblock %}
 
+{% set string= "some string \n from \n database" %}
+
 {% block body %}
     <style>
         .example-wrapper {
@@ -55,20 +57,19 @@
 
         {{ include('includes/subview.html.twig', {'usersTwig': usersTwig}) }}
 
-        {% for i in 1..10 %}
-            <div class="{{ cycle(['even', 'odd'], i) }}">
+        {{ path('home') }} <br>
+        {{ url('home') }} <br>
+        {{ asset('images/logo.png') }} <br>
+        {{ absolute_url(asset('images/logo.png')) }} <br>
 
-                {{ i }}
-
-            </div>
-        {% endfor %}
+        <img src="{{ asset('images/logo.png') }}" alt="logo example test">
 
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
     <script>
-        alert(454);
+        let route = "{{ string|escape('js') }}";
+        alert(route);
     </script>
 {% endblock %}

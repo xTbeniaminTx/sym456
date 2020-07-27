@@ -21,7 +21,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/page", name="default_home")
+     * @Route("/home", name="home")
      */
     public function index(UserRepository $userRepository, GiftsService $gifts, Request $request, Session $session)
     {
