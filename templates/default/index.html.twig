@@ -25,6 +25,10 @@
         }
     </style>
 
+    {% set usersTwig = [
+        {name:"Sussan"},{name:"Lyla"},{name:"Condor"}
+    ] %}
+
     <div class="example-wrapper">
         <ul>
             {% for user in users %}
@@ -32,7 +36,7 @@
             {% endfor %}
         </ul>
 
-{#{{ dump(app) }}#}
+        {#{{ dump(app) }}#}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="{{ label }}">
@@ -41,6 +45,12 @@
 
 
             {% endfor %}
+        {% endfor %}
+
+        {% for userT in usersTwig if userT.name == 'Condor' %}
+            <p>{{ userT.name }}</p>
+        {% else %}
+            <p>No user with this name</p>
         {% endfor %}
 
     </div>
