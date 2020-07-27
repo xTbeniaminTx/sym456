@@ -15,6 +15,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DefaultController extends AbstractController
 {
 
+    public function __construct($logger)
+    {
+
+    }
+
     /**
      * @Route("/", name="default_home")
      */
@@ -23,7 +28,7 @@ class DefaultController extends AbstractController
 
         $users = $userRepository->findAll();
 
-        if ($users) {
+        if (!$users) {
             throw $this->createNotFoundException('The users do not exist');
         }
 
