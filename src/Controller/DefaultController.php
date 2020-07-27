@@ -121,4 +121,24 @@ class DefaultController extends AbstractController
         exit('Test redirection!');
     }
 
+    /**
+     * @Route("/forwarding_to_controller")
+     */
+    public function forwardingToController()
+    {
+        $response = $this->forward(
+            'App\Controller\DefaultController::methodToForward',
+            array('param' => '15')
+        );
+        return $response;
+    }
+
+    /**
+     * @Route("/url-to-forward-to/{param?}", name="route_to_forward_to")
+     */
+    public function methodToForward($param)
+    {
+        exit('Test controller forwarding - ' .$param);
+    }
+
 }
