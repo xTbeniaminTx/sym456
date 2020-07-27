@@ -23,10 +23,14 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/home/{id}", name="home")
+     * @Route("/home", name="home")
      */
-    public function index(Request $request, User $user)
+    public function index(Request $request, EntityManagerInterface $entityManager)
     {
+        $user = new User();
+        $user->setName('Robica');
+        $entityManager->persist($user);
+        $entityManager->flush();
 
         dump($user);
 
