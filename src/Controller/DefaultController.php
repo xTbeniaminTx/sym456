@@ -27,21 +27,16 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository)
     {
-//        $user = $userRepository->find(6);
-//        $user = $userRepository->findOneBy(['name' => 'Benjamin']);
 
-//        $user = $userRepository->findBy(['name'=>'Benjamin'],['id'=>'ASC']);
+        $conn = $entityManager->getConnection();
+        $sql = '
+        SELECT * FROM user u 
+        WHERE u.id > :id
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => 5]);
 
-        $id = 2;
-        $user = $userRepository->find($id);
-
-        if (!$user) {
-            throw $this->createNotFoundException('No user with this id ' . $id);
-        }
-
-
-
-        dump($user);
+        dump($stmt->fetchAll());
 
         return $this->render('default/index.html.twig', []);
     }
