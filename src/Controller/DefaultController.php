@@ -28,9 +28,11 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
-        $video = $entityManager->find(Video::class, 1);
+        $user = $entityManager->find(User::class, 10);
 
-        dump($video->getUser()->getName());
+        foreach ($user->getVideos() as $video) {
+            dump($video->getTitle());
+        }
 
         return $this->render('default/index.html.twig', []);
     }
