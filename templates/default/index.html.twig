@@ -66,6 +66,14 @@
 
         <p>Glogal traking code is: {{ ga_code }}</p>
 
+        {{ app.user }}
+
+        {{ app.request.get('param') }}
+
+        {{ app.environment }}
+
+        {{ dump(app.session) }}
+
     </div>
 {% endblock %}
 
