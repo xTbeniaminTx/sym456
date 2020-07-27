@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 class DefaultController extends AbstractController
 {
@@ -101,7 +102,23 @@ class DefaultController extends AbstractController
     public function download()
     {
         $path = $this->getParameter('download_directory');
-        return $this->file($path.'file.pdf');
+        return $this->file($path . 'file.pdf');
+    }
+
+    /**
+     * @Route("/redirect-test")
+     */
+    public function redirectTest()
+    {
+        return $this->redirectToRoute('route_to_redirect', array('param' => 10));
+    }
+
+    /**
+     * @Route("/url-to-redirect/{param?}", name="route_to_redirect")
+     */
+    public function methodToRedirect()
+    {
+        exit('Test redirection!');
     }
 
 }
