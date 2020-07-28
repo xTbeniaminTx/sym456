@@ -30,9 +30,10 @@ class DefaultController extends AbstractController
     {
         $user = $entityManager->find(User::class, 10);
 
-        foreach ($user->getVideos() as $video) {
-            dump($video->getTitle());
-        }
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        dump($user);
 
         return $this->render('default/index.html.twig', []);
     }
