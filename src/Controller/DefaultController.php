@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Address;
 use App\Entity\User;
 use App\Entity\Video;
 use App\Repository\UserRepository;
@@ -28,15 +29,22 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
-        $user = $entityManager->find(User::class, 10);
+        $user = new User();
+        $user->setName('JonnyBravo');
 
-        $video = $entityManager->find(Video::class,3);
+        $address = new Address();
+        $address->setStreet('Pacii');
+        $address->setNumber(3);
 
+        $user->setAddress($address);
 
-        $user->removeVideo($video);
+        $entityManager->persist($user);
+//        $entityManager->persist($address); // required if cqscqde:persist is not set
+
         $entityManager->flush();
 
-        dump($user);
+        dump($user->getAddress()->getStreet());
+
 
         return $this->render('default/index.html.twig', []);
     }
