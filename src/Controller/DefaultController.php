@@ -30,7 +30,10 @@ class DefaultController extends AbstractController
     {
         $user = $entityManager->find(User::class, 10);
 
-        $entityManager->remove($user);
+        $video = $entityManager->find(Video::class,3);
+
+
+        $user->removeVideo($video);
         $entityManager->flush();
 
         dump($user);

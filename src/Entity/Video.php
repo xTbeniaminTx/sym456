@@ -19,7 +19,7 @@ class Video
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="videos")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     *
      */
     private $user;
 

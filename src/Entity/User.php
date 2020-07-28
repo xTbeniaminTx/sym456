@@ -39,7 +39,8 @@ class User
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="user", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="user", cascade={"remove"},
+     *     orphanRemoval=true)
      */
     private $videos;
 
