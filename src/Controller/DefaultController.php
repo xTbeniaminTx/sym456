@@ -29,21 +29,19 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $entityManager)
     {
-        $user = new User();
-        $user->setName('JonnyBravo');
+        $user11 = $entityManager->find(User::class, 11);
+        $user12 = $entityManager->find(User::class, 12);
+        $user13 = $entityManager->find(User::class, 13);
+        $user14 = $entityManager->find(User::class, 14);
+//
+//        $user11->addFollowed($user12);
+//        $user11->addFollowed($user13);
+//        $user11->addFollowed($user14);
 
-        $address = new Address();
-        $address->setStreet('Pacii');
-        $address->setNumber(3);
+//        $entityManager->flush();
 
-        $user->setAddress($address);
-
-        $entityManager->persist($user);
-//        $entityManager->persist($address); // required if cqscqde:persist is not set
-
-        $entityManager->flush();
-
-        dump($user->getAddress()->getStreet());
+        dump($user11->getFollowed()->count());
+        dump($user13->getFollowing()->count());
 
 
         return $this->render('default/index.html.twig', []);
